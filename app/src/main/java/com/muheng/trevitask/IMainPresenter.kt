@@ -1,5 +1,6 @@
 package com.muheng.trevitask
 
+import android.graphics.Point
 import android.widget.BaseAdapter
 
 const val DEFAULT_VAL = 3
@@ -14,5 +15,8 @@ interface IMainPresenter {
 
     fun createAdapter(): BaseAdapter?
 
-    fun selectPoint(x: Int, y: Int): Boolean
+    fun selectPoint(point: Point): Boolean
+
+    fun genRandomPoint(): Point
+
 }

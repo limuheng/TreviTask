@@ -1,7 +1,9 @@
 package com.muheng.trevitask
 
 import android.content.Context
+import android.graphics.Point
 import android.widget.BaseAdapter
+import kotlin.random.Random
 
 class MainPresenterImpl(private val context: Context): IMainPresenter {
 
@@ -37,8 +39,14 @@ class MainPresenterImpl(private val context: Context): IMainPresenter {
         return gridViewPresenter.getAdapter()
     }
 
-    override fun selectPoint(x: Int, y: Int): Boolean {
-        return gridViewPresenter.setSelectedPoint(x, y)
+    override fun selectPoint(point: Point): Boolean {
+        return gridViewPresenter.setSelectedPoint(point.x, point.y)
+    }
+
+    override fun genRandomPoint(): Point {
+        val x = Random.nextInt(0, col)
+        val y = Random.nextInt(0, row)
+        return Point(x, y)
     }
 
 }
