@@ -33,8 +33,9 @@ class MainPresenterImpl(private val context: Context): IMainPresenter {
     }
 
     override fun createAdapter(): BaseAdapter? {
-        gridViewPresenter.init(col, row) {
-            Item(false)
+        val size = col * row
+        gridViewPresenter.init(col, row) { index ->
+            Item(false, index >= size)
         }
         return gridViewPresenter.getAdapter()
     }

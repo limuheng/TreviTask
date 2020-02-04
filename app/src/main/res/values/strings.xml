@@ -5,5 +5,5 @@
     <string name="row">Row</string>
     <string name="draw">Draw</string>
     <string name="random">random</string>
-    <string name="btn_text">Clear</string>
+    <string name="btn_text">OK</string>
 </resources>

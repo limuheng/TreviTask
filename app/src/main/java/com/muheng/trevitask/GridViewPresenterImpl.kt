@@ -23,7 +23,7 @@ class GridViewPresenterImpl(private val context: Context): IGridViewPresenter {
         this.row = row
 
         data.clear()
-        val size = col * row
+        val size = col * (row + 1)
         for (i in 0 until size) {
             data.add(factory(i))
         }
@@ -79,6 +79,7 @@ class GridViewPresenterImpl(private val context: Context): IGridViewPresenter {
             if (selectedPoint != null) {
                 data[selectedPoint!!.y * col + selectedPoint!!.x].isSelected = false
                 selectedPoint = null
+                adapter?.notifyDataSetChanged()
             }
         }
     }

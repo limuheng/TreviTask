@@ -7,6 +7,7 @@ import android.os.Message
 import android.widget.*
 import androidx.core.widget.doOnTextChanged
 
+const val MSG_STOP_RANDOM = 1234560
 const val MSG_RANDOM_CELL = 1234567
 const val DURATION_PERIOD = 10000L
 
@@ -65,7 +66,7 @@ class MainActivity : AppCompatActivity(), Handler.Callback {
     }
 
     override fun onDestroy() {
-        handler.looper.quitSafely()
+        handler.sendMessage(handler.obtainMessage(MSG_STOP_RANDOM))
         super.onDestroy()
     }
 
@@ -75,6 +76,10 @@ class MainActivity : AppCompatActivity(), Handler.Callback {
                 randomTask.run()
                 val msg = handler.obtainMessage(MSG_RANDOM_CELL)
                 handler.sendMessageDelayed(msg, DURATION_PERIOD)
+                true
+            }
+            MSG_STOP_RANDOM -> {
+                // Stop
                 true
             }
             else -> {
